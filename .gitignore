@@ -3,7 +3,6 @@ __pycache__
 logs/
 pred/
 models/
-##dumps*/
 certs/
 data/
 servers/
