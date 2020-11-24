@@ -13,9 +13,18 @@ pip install boto3
 
 BUCKET_NAME="cdek-ml" # replace with your bucket name
 
+import boto3
 # enter authentication credentials
-s3 = boto3.resource('s3', aws_access_key_id = "$AWS_ID",
-                          aws_secret_access_key= "$AWS_KEY")
+s3 = boto3.resource('s3',
+                    aws_access_key_id=$AWS_ID,
+                    aws_secret_access_key=$AWS_KEY)
+
+# client = boto3.client(
+#   's3',
+#   aws_access_key_id=ACCESS_KEY,
+#   aws_secret_access_key=SECRET_KEY,
+#   aws_session_token=SESSION_TOKEN
+# )
 
 # Download all large phrase indexes to the dataset dups folder
 KEY1='datasets/dumps/denspi_2020-04-10/phrase/0-10.hdf5'

@@ -35,7 +35,7 @@
 
     <link rel="stylesheet" href="files/css/index.css">
 
-    <title>covidAsk</title>
+    <title>CDEKAsk</title>
     <!-- Script here if needed. ex: googletagmanager -->
   </head>
   <body id='page-top'>
@@ -52,7 +52,7 @@
               </a> -->
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item my_nav_item">
-                  <a href="https://github.com/dmis-lab/covidAsk" class="nav-link" target="_blank" >Github</a>
+                  <a href="https://github.com/dmis-lab/CDEKAsk" class="nav-link" target="_blank" >Github</a>
                 </li>
 		<!--
                 <li class="nav-item my_nav_item">
@@ -65,7 +65,7 @@
           <div class="container mb-4 myLanding" id="_myLanding">
             <div class="row mb-3">
               <div class="col-xl-12 mx-auto text-center">
-                <span class="mybrand font-italic">covidAsk</span>
+                <span class="mybrand font-italic">CDEKAsk</span>
                 <br>
                 <span class="align-top">Last updated: 2020.04.16</span>
               </div>
@@ -110,39 +110,39 @@
                 <div class="col-sm-12 col-md-12 col-lg-9 mx-auto">
                   <div class="row">
                     <div class="col-12">
-			    <i>covidAsk</i> answers your questions in real-time with 37K COVID-19 articles provided by <a href="https://pages.semanticscholar.org/coronavirus-research" target="_blank">AI2</a>. Each of its results has relevant biomedical entities highlighted as well. You can ask questions like:
+			    <i>CDEKAsk</i> answers your questions in real-time with 37K COVID-19 articles provided by <a href="https://pages.semanticscholar.org/coronavirus-research" target="_blank">AI2</a>. Each of its results has relevant biomedical entities highlighted as well. You can ask questions like:
 			<ul>
 				<li><a href="/search?query=How+long+is+the+range+of+incubation+periods+for+COVID-19+in+humans%3F">How long is the range of incubation periods for COVID-19 in humans?</a></li>
 				<li><a href="/search?query=What+temperature+kills+HCoV-19%3F">What temperature kills HCoV-19?</a></li>
 				<li><a href="/search?query=acute+respiratory+distress+syndrome+mortality+rate">acute respiratory distress syndrome mortality rate</a></li>
 			</ul>
-		      You can also use covidAsk with simple python code as follows:
+		      You can also use CDEKAskwith simple python code as follows:
 		      <br> <br>
 		      <pre class="example_prebox"><code class="python">import requests
 import json
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-def covidAsk(query):
+def CDEKAsk(query):
     params = {'query': query, 'strat': 'dense_first'}
     res = requests.get('https://covidask.korea.ac.kr/api', params=params, verify=False)
     outs = json.loads(res.text)
     return outs
 
 query = 'Is there concrete evidence for the presence of asymptomatic transmissions?'
-results = covidAsk(query)
+results = CDEKAsk(query)
 
-# Top 10 phrase answers from covidAsk
+# Top 10 phrase answers from CDEKAsk
 print([r['answer'] for r in results['ret']])
 
-# Top 10 sentence answers from covidAsk
+# Top 10 sentence answers from CDEKAsk
 print([r['context'][r['sent_start']:r['sent_end']] for r in results['ret']])</code></pre>
-			Code is available <a href="https://github.com/dmis-lab/covidAsk" target="_blank">here</a> and a technical report will be available soon.
-			<i>covidAsk</i> is a project by <a href="https://jhyuklee.github.io/" target="_blank">Jinhyuk Lee</a>, <a href="https://www.semanticscholar.org/author/Minbyul-Jeong/147498986" target="_blank">Minbyul Jeong</a>, <a href="https://mjeensung.github.io/resume/" target="_blank">Mujeen Sung</a>, <a href="http://wonjin.info/" target="_blank">Wonjin Yoon</a>, <a href="https://www.semanticscholar.org/author/Yonghwa-Choi/2176967" target="_blank">Yonghwa Choi</a>, <a href="https://www.semanticscholar.org/author/Miyoung-Ko/22670284" target="_blank">Miyoung Ko</a>, <a href="https://github.com/seankala" target="_blank">Seok-Won Lee</a>, and <a href="https://dmis.korea.ac.kr/jaewoo-kang-p-i" target="_blank">Jaewoo Kang</a> at <a href="https://dmis.korea.ac.kr" target="_blank">DMIS Lab</a> of Korea University. 
+			Code is available <a href="https://github.com/dmis-lab/CDEKAsk" target="_blank">here</a> and a technical report will be available soon.
+			<i>CDEKAsk</i> is a project by <a href="https://jhyuklee.github.io/" target="_blank">Jinhyuk Lee</a>, <a href="https://www.semanticscholar.org/author/Minbyul-Jeong/147498986" target="_blank">Minbyul Jeong</a>, <a href="https://mjeensung.github.io/resume/" target="_blank">Mujeen Sung</a>, <a href="http://wonjin.info/" target="_blank">Wonjin Yoon</a>, <a href="https://www.semanticscholar.org/author/Yonghwa-Choi/2176967" target="_blank">Yonghwa Choi</a>, <a href="https://www.semanticscholar.org/author/Miyoung-Ko/22670284" target="_blank">Miyoung Ko</a>, <a href="https://github.com/seankala" target="_blank">Seok-Won Lee</a>, and <a href="https://dmis.korea.ac.kr/jaewoo-kang-p-i" target="_blank">Jaewoo Kang</a> at <a href="https://dmis.korea.ac.kr" target="_blank">DMIS Lab</a> of Korea University.
                       <br>
             		      <br>
 			      <!--
-		 This project is an ongoing endeavor and will be updated accordingly. Despite its capability, it still needs more resources to grow and develop. If you are interested in helping covidAsk scale up its capabilities or provide reliable web hosting, please contact <a href="mailto:jinhyuk_lee@korea.ac.kr">jinhyuk_lee@korea.ac.kr</a>. -->
+		 This project is an ongoing endeavor and will be updated accordingly. Despite its capability, it still needs more resources to grow and develop. If you are interested in helping CDEKAskscale up its capabilities or provide reliable web hosting, please contact <a href="mailto:jinhyuk_lee@korea.ac.kr">jinhyuk_lee@korea.ac.kr</a>. -->
                     </div>
                   </div>
                   <!-- <div class="row"> -->

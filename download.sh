@@ -13,4 +13,4 @@ wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download
 tar -xvzf "$DOWNLOAD_PATH_TAR"
 rm "$DOWNLOAD_PATH_TAR"
 
-echo "covidAsk download done!"
+echo "CDEKAsk download done!"

@@ -1,6 +1,6 @@
 import argparse
 import requests
-from covidask import covidAsk
+from cdekaskimport CDEKAsk
 
 
 if __name__ == '__main__':
@@ -21,10 +21,10 @@ if __name__ == '__main__':
     parser.add_argument('--search_strategy', default='hybrid')
     args = parser.parse_args()
 
-    covidask = covidAsk(base_ip=args.base_ip, index_port=args.index_port, args=args)
+    cdekask= CDEKAsk(base_ip=args.base_ip, index_port=args.index_port, args=args)
 
     query = 'Is there concrete evidence for the presence of asymptomatic transmissions?'
-    result = covidask.query(query)
+    result = cdekask.query(query)
     print(f'\nTop {args.top_k} answers to a question: {query}')
     for r_i, r in enumerate(result["ret"]):
         print('[Answer ' + str(r_i+1) + ']: ' + r["answer"])

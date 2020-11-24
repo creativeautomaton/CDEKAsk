@@ -1,38 +1,38 @@
 # <p align=center><i>CDEKAsk</i></p>
-<p align="center"><img width="90%" src="images/covidAsk.png" /></p>
-This repository provides code for covidAsk (https://covidask.korea.ac.kr), a real-time biomedical question answering system on COVID-19 articles. We currently support 1) dumping your own article set using our pre-trained models and 2) hosting a server like covidAsk on your machine. Please see our paper (https://openreview.net/forum?id=Wssn20iNf6j) for more details. This project is done by the members of DMIS Lab at Korea University.
+<p align="center"><img width="90%" src="images/CDEKAsk.png" /></p>
+This repository provides code for CDEKAsk(https://covidask.korea.ac.kr), a real-time biomedical question answering system on COVID-19 articles. We currently support 1) dumping your own article set using our pre-trained models and 2) hosting a server like CDEKAskon your machine. Please see our paper (https://openreview.net/forum?id=Wssn20iNf6j) for more details. This project is done by the members of DMIS Lab at Korea University.
 
 ## Quick Start
-With simple python requests, you can get answers from covidAsk.
+With simple python requests, you can get answers from CDEKAsk.
 ```python
 import requests
 import json
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-def covidAsk(query):
+def CDEKAsk(query):
     params = {'query': query, 'strat': 'dense_first'}
     res = requests.get('https://covidask.korea.ac.kr/api', params=params, verify=False)
     outs = json.loads(res.text)
     return outs
 
 query = "Is there concrete evidence for the presence of asymptomatic transmissions?"
-results = covidAsk(query)
+results = CDEKAsk(query)
 
-# Top 10 phrase answers from covidAsk
+# Top 10 phrase answers from CDEKAsk
 print([r['answer'] for r in results['ret']])
 ```
 The results will look like:
 ```bash
 ['little', 'lacking', 'no', 'evidence suggests the possibility of transmission from camel products or asymptomatic MERS cases', 'No', 'there is mixed', 'The research evidence is very lacking', 'there are a few', 'there are a few', 'There are few']
 ```
-See `example.py` and our [Kaggle submission](https://www.kaggle.com/jinhyuklee/answering-domain-specific-questions-in-real-time) for more examples. To build your own covidAsk and host the system, See below.
+See `example.py` and our [Kaggle submission](https://www.kaggle.com/jinhyuklee/answering-domain-specific-questions-in-real-time) for more examples. To build your own CDEKAskand host the system, See below.
 
 ## Environment
 CDEKAsk is based on PyTorch and Faiss. You can install the environment with `environment.yml`.
 ```bash
 $ conda env create -f environment.yml
-$ conda activate covidAsk
+$ conda activate CDEKAsk
 ```
 Note that our code is mostly based on [DenSPI](https://github.com/uwnlp/denspi) and [DrQA](https://github.com/facebookresearch/DrQA).
 
@@ -72,7 +72,7 @@ $ ./create_index.sh
 Before running, please change the directories in `create_index.sh` accordingly.
 
 ## Hosting
-To serve your own covidAsk, use `serve.sh` script.
+To serve your own CDEKAsk, use `serve.sh` script.
 ```bash
 $ ./serve.sh
 ```
@@ -80,14 +80,14 @@ This will host a new server in localhost with the specified port (default `$PORT
 
 Once you properly setup the server, you can ask questions with a simple python coding:
 ```python
-from covidask import covidAsk
+from cdekask import CDEKAsk
 
 # Set $PORT
-covidask = covidAsk(index_port='9030')
+cdekask = CDEKAsk(index_port='9030')
 
-# Ask a question to covidAsk
+# Ask a question to CDEKAsk
 query = "Is there concrete evidence for the presence of asymptomatic transmissions?"
-result = covidask.query(query)
+result = cdekask.query(query)
 print([r['answer'] for r in result['ret']])
 ```
 See `example.py` for more search options.
@@ -95,11 +95,11 @@ See `example.py` for more search options.
 ## Evaluation
 We manually created a small evaluation set consisting of 111 questions regarding COVID-19 from Kaggle, CDC and WHO (COVID-19 Questions). You can make API calls to evaluate the server as:
 ```bash
-$ python covidask.py --run_mode eval_sent --index_port $PORT --test_path test_interrogative_updated.json
+$ python cdekask.py --run_mode eval_sent --index_port $PORT --test_path test_interrogative_updated.json
 ```
 Or, you can evaluate by loading phrase dumps onto the memory as:
 ```bash
-$ python covidask.py --run_mode eval_sent_inm --query_port $Q_PORT --doc_port $D_PORT --dump_dir $DUMP_DIR --test_path test_interrogative_updated.json
+$ python cdekask.py --run_mode eval_sent_inm --query_port $Q_PORT --doc_port $D_PORT --dump_dir $DUMP_DIR --test_path test_interrogative_updated.json
 ```
 This will save a prediction file into `pred/test_interrogative_updated.pred` with results as follows:
 ```bash
@@ -120,5 +120,5 @@ This will save a prediction file into `pred/test_interrogative_updated.pred` wit
 ```
 
 ## Contact
-For any issues regarding covidAsk, please register a GitHub issue.
-For any collaboration related to covidAsk, please contact Jinhyuk Lee (`lee.jnhk (at) gmail.com`).
+For any issues regarding CDEKAsk, please register a GitHub issue.
+For any collaboration related to CDEKAsk, please contact Jinhyuk Lee (`lee.jnhk (at) gmail.com`).

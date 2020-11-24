@@ -42,7 +42,7 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s -   %(message
 logger = logging.getLogger(__name__)
 
 
-class covidAsk(object):
+class CDEKAsk(object):
     def __init__(self, base_ip='http://localhost', query_port='-1', doc_port='-1', index_port='-1', args=None):
         self.args = args
 
@@ -1031,7 +1031,7 @@ if __name__ == '__main__':
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(args.seed)
 
-    covidask = covidAsk(
+    cdekask = CDEKAsk(
         base_ip=args.base_ip,
         query_port=args.query_port,
         doc_port=args.doc_port,
@@ -1041,18 +1041,18 @@ if __name__ == '__main__':
 
     # Usages
     if args.run_mode == 'q_serve':
-        covidask.serve_query_encoder(args.query_port, args)
+        cdekask.serve_query_encoder(args.query_port, args)
 
     elif args.run_mode == 'd_serve':
-        covidask.serve_doc_ranker(args.doc_port, args)
+        cdekask.serve_doc_ranker(args.doc_port, args)
 
     elif args.run_mode == 'p_serve':
-        covidask.serve_phrase_index(args.index_port, args)
+        cdekask.serve_phrase_index(args.index_port, args)
 
     elif args.run_mode == 'query':
         query = 'Which Lisp framework has been developed for image processing?'
         # query = ' Several genetic factors have been related to HIV-1 resistance'
-        result = covidask.query(query)
+        result = cdekask.query(query)
         logger.info(f'Answers to a question: {query}')
         logger.info(f'{[r["answer"] for r in result["ret"]]}')
 
@@ -1062,7 +1062,7 @@ if __name__ == '__main__':
             'What are the 3 main bacteria found in human milk?',
             'Where did COVID-19 happen?'
         ]
-        result = covidask.batch_query(
+        result = cdekask.batch_query(
             queries,
             max_answer_length=args.max_answer_length,
             start_top_k=args.start_top_k,
@@ -1078,22 +1078,22 @@ if __name__ == '__main__':
             logger.info(f'{[r["answer"] for r in result]}')
 
     elif args.run_mode == 'save_top_k':
-        covidask.save_top_k(args)
+        cdekask.save_top_k(args)
 
     elif args.run_mode == 'eval_inmemory':
-        covidask.eval_inmemory(args)
+        cdekask.eval_inmemory(args)
 
     elif args.run_mode == 'eval_request':
-        covidask.eval_request(args)
+        cdekask.eval_request(args)
 
     elif args.run_mode == 'eval_sent':
-        covidask.eval_sent(args)
+        cdekask.eval_sent(args)
 
     elif args.run_mode == 'eval_sent_inm':
-        covidask.eval_sent_inm(args)
+        cdekask.eval_sent_inm(args)
 
     elif args.run_mode == 'eval_trec':
-        covidask.eval_trec(args)
+        cdekask.eval_trec(args)
 
     elif args.run_mode == 'get_doc_scores':
         queries = [
@@ -1102,15 +1102,15 @@ if __name__ == '__main__':
             'On which date was Genghis Khan\'s palace rediscovered by archeaologists?',
             'To-y is a _ .'
         ]
-        result = covidask.get_doc_scores(queries, [[36], [2], [31], [2222]])
+        result = cdekask.get_doc_scores(queries, [[36], [2], [31], [2222]])
         logger.info(result)
-        result = covidask.get_top_docs(queries, 5)
+        result = cdekask.get_top_docs(queries, 5)
         logger.info(result)
-        result = covidask.get_doc_meta(['29970463']) # Only used when there's doc_meta
+        result = cdekask.get_doc_meta(['29970463']) # Only used when there's doc_meta
         logger.info(result)
-        result = covidask.get_doc_meta(['COVID-ABS_418538_network-based drug repurposing for novel coronavirus 2019-ncov/sars-cov-2']) # Only used when there's doc_meta
+        result = cdekask.get_doc_meta(['COVID-ABS_418538_network-based drug repurposing for novel coronavirus 2019-ncov/sars-cov-2']) # Only used when there's doc_meta
         logger.info(result)
-        result = covidask.get_q_spvecs(queries)
+        result = cdekask.get_q_spvecs(queries)
         logger.info(result)
 
     else:
