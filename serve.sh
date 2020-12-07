@@ -3,9 +3,9 @@
 LOG_DIR="logs"
 mkdir -p $LOG_DIR
 
-MODELS_DIR="models"
+MODELS_DIR="datasets/models"
 DOC_RANKER_NAME="COVID-abs-v1-ner-norm-tfidf-ngram=2-hash=16777216-tokenizer=simple.npz"
-DUMP_DIR="dumps/denspi_2020-04-10"
+DUMP_DIR="datasets/dumps/denspi_2020-04-10"
 Q_PORT="9010"
 D_PORT="9020"
 PORT="9030"

@@ -1017,7 +1017,7 @@ if __name__ == '__main__':
     parser.add_argument('--top_phrase_path', default='top_phrases.json')
 
     # Run mode
-    parser.add_argument('--base_ip', default='http://163.152.20.133')
+    parser.add_argument('--base_ip', default='http://0.0.0.0')
     parser.add_argument('--run_mode', default='batch_query')
     parser.add_argument('--cuda', default=False, action='store_true')
     parser.add_argument('--draft', default=False, action='store_true')
